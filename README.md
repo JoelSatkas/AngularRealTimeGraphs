@@ -1,6 +1,6 @@
 # Angular 7 Real Time Graphs
 
-######This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+`This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.`
 
 This project looks at implementing real time graphs using Angular 7.
 It has a node server to push data to the Angular application, and the application itself has 3 different
@@ -34,9 +34,24 @@ My second solution attempted at addressing some of these problems.
 ![Alt text](readMeImages/Method2.png?raw=true "Method2")
 
 The second solution took the control away from the service layer and gave it to the graphs. The graphs were now responsible for
-dictating when they will redraw themselves, asking for data before so doing. ....
-####TODO finish this
-  
+dictating when they will redraw themselves, asking for data before so doing. I also added a slider for controller how regularly the graphs will
+try to update them selves, this means that for low spec machines such as tablets and phones, the app can still work with a reduced
+frame rate. This also opens up the opportunity for media calls to assess the capabilities of the device and turn down the defaults
+when loading the app to improve performance. 
+
+Each graph is now responsible for taking in user input, asking for new data and redrawing itself. The service layer has become a simple
+middle layer for getting the data for the graphs and receiving the data from the server. 
+
+The service layer also holds the data it receives and gives the graphs a reference to it so they can take what data they need 
+to draw themselves.  
+
+This eliminates the need for throttling as the graphs refresh rate can now be dictated by the users and have its defaults
+set by the specs of the device running the app. Since the graphs are also running in their own rate, it eliminates the 
+websocket and redrawing congestion. No matter what speed the websocket is filling the data buffer, the graphs will render 
+at a timely fashion avoiding freezing within the app or lowering the performance. 
+
+This also raises the possibility of an offline mode. The service layer/server worker can store the data as it receives it and 
+load it up if there is no connection to the server, allowing the user to view past data.   
 
 ## Development server
 
@@ -44,22 +59,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 `node Server.js` in the server folder to run the data server that will push data to the Angular app.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
