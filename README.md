@@ -13,7 +13,7 @@ Making a real time graphing application raises some questions about code managem
 and performance. In my first solution, I presumed that the server will manage what type of data to send the graphs and 
 the client side would just display them 
 
-![alt text](https://raw.githubusercontent.com/JoelSatkas/AngularRealTimeGraphs/readMeImages/Method1.png)
+![Alt text](readMeImages/Method1.png?raw=true "Method1")
 
 This solution kept the client side relatively simple. As soon as the service layer got a message from the web socket, it would update
 the data and tell the graphs to redraw them selves. It was also easy to slot in any type of graphing library. 
@@ -31,7 +31,7 @@ mean that there are too many web socket calls and graph redraw calls causing the
 
 My second solution attempted at addressing some of these problems.
 
-![alt text](https://raw.githubusercontent.com/JoelSatkas/AngularRealTimeGraphs/readMeImages/Method2.png)
+![Alt text](readMeImages/Method2.png?raw=true "Method2")
 
 The second solution took the control away from the service layer and gave it to the graphs. The graphs were now responsible for
 dictating when they will redraw themselves, asking for data before so doing. ....
