@@ -1,0 +1,40 @@
+<div>
+  <div>
+    <!--  previouse data point button-->
+    <button mat-stroked-button [disabled]="disablePausedFunctionality"
+            (click)="dataPointBack()"
+            matTooltip="Back one data point">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <!--  Pause/play button-->
+    <button mat-stroked-button [disabled]="disablePlayButton"
+            (click)="pauseButtonClicked()"
+            matTooltip="Pause/Play the graph">
+      <mat-icon>{{currentPlayIcon}}</mat-icon>
+    </button>
+
+    <!--  next data point button-->
+    <button mat-stroked-button [disabled]="disablePausedFunctionality"
+            (click)="dataPointForward()"
+            matTooltip="Forward one data point">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+
+    <!--  historical/Live button-->
+    <button mat-stroked-button (click)="liveButtonClicked()"
+            matTooltip="Live/Historical Mode">
+      <mat-icon>{{currentModeIcon}}</mat-icon>
+    </button>
+
+    <!--  Speed slider-->
+    <mat-slider thumbLabel
+                tickInterval="10"
+                (input)="onSliderInputChange($event)"
+                min="{{intervalRateMinimum}}"
+                max="{{intervalRateMaximum}}"
+                step="10"
+                value="{{intervalRateDefault}}">
+    </mat-slider>
+  </div>
+</div>
