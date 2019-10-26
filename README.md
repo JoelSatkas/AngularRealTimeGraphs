@@ -3,7 +3,7 @@
 `This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.`
 
 
-##Demo
+## Demo
 
 ![Alt text](readMeImages/demo.gif "demo")
 
