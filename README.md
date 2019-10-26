@@ -2,6 +2,11 @@
 
 `This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.`
 
+
+##Demo
+
+![Alt text](readMeImages/demo.gif "demo")
+
 This project looks at implementing real time graphs using Angular 7.
 It has a node server to push data to the Angular application, and the application itself has 3 different
 javascript graphing libraries running simultaneously.
